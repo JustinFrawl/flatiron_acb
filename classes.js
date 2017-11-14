@@ -15,7 +15,7 @@ class Comment {
         store.posts.push(this);
       }
       comments() {
-      return store.comments.filter(category => {
+      return store.comments.filter(comment => {
         return comment.post_id == this.id;
           });
       }
@@ -28,9 +28,8 @@ class Category {
           store.categories.push(this);
         }
         posts() {
-        return store.posts.filter(category => {
+        return store.posts.filter(post => {
           return post.category_id == this.id;
             });
         }
       }
-  
