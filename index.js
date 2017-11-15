@@ -63,15 +63,8 @@ function post_cat(value){
 
     })
   })
-  .then(function (data) {
-    console.log('Request success: ', data);
-  })
-  .catch(function (error) {
-    console.log('Request failure: ', error);
-  });
-
 }
-// new Category(name= value)
+// new Category(name: value)
 }
 
 

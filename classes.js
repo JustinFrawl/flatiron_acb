@@ -1,3 +1,9 @@
+let postid = 0
+let commentid = 0
+let categoryid = 0
+
+
+
 class Comment {
     constructor(data){
       this.text = data.text
@@ -11,6 +17,7 @@ class Comment {
         this.text = data.text
         this.category_id = data.category_id
         this.id = data.id
+        this.comments = data.comments
         store.posts.push(this);
       }
       comments() {
@@ -23,6 +30,7 @@ class Comment {
 class Category {
        constructor(data){
           this.name = data.name
+          this.posts = data.posts
           this.id = data.id;
           store.categories.push(this);
           this.renderSelf()

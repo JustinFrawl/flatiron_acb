@@ -5,13 +5,14 @@ class App {
   startUp(){
 
     // debugger
-    this.createPosts()
+    // this.createPosts()
     // debugger
-    this.createComments()
+    // this.createComments()
     // debugger
     this.createCategories()
 
   }
+
 
 createCategories(){
    fetch(`https://jk-api.herokuapp.com/api/v1/categories`)
@@ -22,6 +23,7 @@ createCategories(){
               return {
                 id: category.id,
                 name: category.name,
+                posts: category.posts,
 
               };
             })
@@ -30,45 +32,46 @@ createCategories(){
             });
           });
       }
-       createPosts(){
-       fetch(`https://jk-api.herokuapp.com/api/v1/posts`)
-            .then(res => res.json())
-            .then(res => {
-              const posts = res
-                .map(post => {
-                  return {
-                    id: post.id,
-                    text: post.text,
-                    category_id: post.category_id,
-                    image: post.image
-
-                  };
-                })
-                .map(postData => {
-              new Post(postData);
-                });
-              });
-              // debugger
-            }
-
-              createComments(){
-               fetch(`https://jk-api.herokuapp.com/api/v1/comments`)
-                    .then(res => res.json())
-                    .then(res => {
-                      const comments = res
-                        .map(comment => {
-                          return {
-                            id: comment.id,
-                            text: comment.text,
-                            post_id: comment.post_id,
-
-
-                          };
-                        })
-                        .map(commentData => {
-                        new Comment(commentData);
-                        });
-                      });
-          }
+      //  createPosts(){
+      //  fetch(`https://jk-api.herokuapp.com/api/v1/posts`)
+      //       .then(res => res.json())
+      //       .then(res => {
+      //         const posts = res
+      //           .map(post => {
+      //             return {
+      //               id: post.id,
+      //               text: post.text,
+      //               category_id: post.category_id,
+      //               comments: post.comments,
+      //               image: post.image
+       //
+      //             };
+      //           })
+      //           .map(postData => {
+      //         new Post(postData);
+      //           });
+      //         });
+      //         // debugger
+      //       }
+       //
+      //         createComments(){
+      //          fetch(`https://jk-api.herokuapp.com/api/v1/comments`)
+      //               .then(res => res.json())
+      //               .then(res => {
+      //                 const comments = res
+      //                   .map(comment => {
+      //                     return {
+      //                       id: comment.id,
+      //                       text: comment.text,
+      //                       post_id: comment.post_id,
+       //
+       //
+      //                     };
+      //                   })
+      //                   .map(commentData => {
+      //                   new Comment(commentData);
+      //                   });
+      //                 });
+      //     }
 
 }
