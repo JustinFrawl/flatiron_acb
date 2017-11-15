@@ -9,20 +9,20 @@ const button = document.getElementById('createCatButton')
 
 document.addEventListener('DOMContentLoaded', function() {
   app = new App
-  setEventListeners()
+  app.addEventListeners();
+  // setEventListeners()
 })
 
 
-function setEventListeners(){
-  button.addEventListener('click', e => {
-    console.log('clicked')
-    postPlace.innerHTML = ""
-    renderNewCatForm()
-  })
-}
+// function setEventListeners(){
+//   button.addEventListener('click', e => {
+//     console.log('clicked')
+//     postPlace.innerHTML = ""
+//     renderNewCatForm()
+//   })
+// }
 
 function renderNewCatForm(){
-  
   let form = document.createElement('form')
   form.innerHTML = `Category Title:<br>
   <input id="new_category" type="text" name="firstname" value="">
