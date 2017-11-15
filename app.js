@@ -1,77 +1,26 @@
 class App {
-  constructor (){
-    this.startUp()
-  }
-  startUp(){
+ constructor (){
+   CategoryAdapter.all()
+ }
 
-    // debugger
-    // this.createPosts()
-    // debugger
-    // this.createComments()
-    // debugger
-    this.createCategories()
+ addEventListeners() {
+   document.body.addEventListener("click", function(e) {
+     if (e.target.className === "categories") {
+       let category_id = event.target.id.split("_")[1];
+       PostAdapter.all(category_id);
+       console.log(store)
+       let post = store.categories.filter(category => {
+         console.log(category)
+         console.log(category_id)
+         return category.id == category_id;
+       });
+       console.log(`this is category_id ${category_id}`)
+       console.log(post)
+       post[0].renderPosts();
 
-  }
 
-
-createCategories(){
-   fetch(`https://jk-api.herokuapp.com/api/v1/categories`)
-        .then(res => res.json())
-        .then(res => {
-          const categories = res
-            .map(category => {
-              return {
-                id: category.id,
-                name: category.name,
-                posts: category.posts,
-
-              };
-            })
-            .map(categoryData => {
-            new Category(categoryData);
-            });
-          });
-      }
-      //  createPosts(){
-      //  fetch(`https://jk-api.herokuapp.com/api/v1/posts`)
-      //       .then(res => res.json())
-      //       .then(res => {
-      //         const posts = res
-      //           .map(post => {
-      //             return {
-      //               id: post.id,
-      //               text: post.text,
-      //               category_id: post.category_id,
-      //               comments: post.comments,
-      //               image: post.image
-       //
-      //             };
-      //           })
-      //           .map(postData => {
-      //         new Post(postData);
-      //           });
-      //         });
-      //         // debugger
-      //       }
-       //
-      //         createComments(){
-      //          fetch(`https://jk-api.herokuapp.com/api/v1/comments`)
-      //               .then(res => res.json())
-      //               .then(res => {
-      //                 const comments = res
-      //                   .map(comment => {
-      //                     return {
-      //                       id: comment.id,
-      //                       text: comment.text,
-      //                       post_id: comment.post_id,
-       //
-       //
-      //                     };
-      //                   })
-      //                   .map(commentData => {
-      //                   new Comment(commentData);
-      //                   });
-      //                 });
-      //     }
+     }
+   });
+ }
 
 }

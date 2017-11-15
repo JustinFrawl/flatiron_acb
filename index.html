@@ -1,70 +1,74 @@
 <html>
 <head>
-<style>
-div.container {
+  <style>
+
+  div.container {
     width: 100%;
     border: 1px solid gray;
-}
+  }
 
-header, footer {
+  header, footer {
     padding: 1em;
     color: white;
     background-color: black;
     clear: left;
     text-align: center;
-}
+  }
 
-nav {
+  nav {
     float: left;
     max-width: 160px;
     margin: 0;
     padding: 1em;
-}
+  }
 
-nav ul {
+  nav ul {
     list-style-type: none;
     padding: 0;
-}
+  }
 
-nav ul a {
+  nav ul a {
     text-decoration: none;
-}
+  }
 
-article {
+  article {
     margin-left: 170px;
     border-left: 1px solid gray;
     padding: 1em;
     overflow: hidden;
-}
+  }
+
 </style>
 </head>
 <body>
 
-<div class="container">
+  <div class="container">
 
-<header>
-   <h1>Flatiron Talk ACB</h1>
-</header>
+    <header>
+      <h1>Flatiron Talk ACB</h1>
+    </header>
 
-<nav>
-  <ul id="category_div">
-    <h3>Categories for Discussion</h3>
+    <nav>
+      <ul id="category_div">
+        <h3>Categories for Discussion</h3>
 
-  </ul>
-  <button id="createCatButton">Post a New Category</button>
-</nav>
+      </ul>
+      <button id="createCatButton">Post a New Category</button>
+    </nav>
 
-<article id="post_place">
+    <article id="post_place">
 
 
-</article>
+    </article>
 
-<footer>JKJF Productions</footer>
+    <footer>JKJF Productions</footer>
 
-</div>
-<script src="index.js"></script>
-<script src="classes.js"></script>
-<script src="app.js"></script>
-
+  </div>
+  <script src="index.js"></script>
+  <script src="classes.js"></script>
+  <script src="app.js"></script>
+  <script src="adapters/category.js"></script>
+  <script src="adapters/comment.js"></script>
+  <script src="adapters/post.js"></script>
 </body>
 </html>
