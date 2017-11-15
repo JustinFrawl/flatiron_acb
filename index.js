@@ -5,16 +5,34 @@ const comments = store.comments
 const posts = store.posts
 const categoryDiv = document.getElementById('category_div')
 const postPlace = document.getElementById('post_place')
+const button = document.getElementById('createCatButton')
 
 document.addEventListener('DOMContentLoaded', function() {
   app = new App
+  setEventListeners()
 })
 
 
 function setEventListeners(){
-  const categoryDiv = document.getElementById('category_div')
-  const postPlace = document.getElementById('post_place')
+  button.addEventListener('click', e => {
+    console.log('clicked')
+    postPlace.innerHTML = ""
+    renderNewCatForm()
+  })
 }
+
+function renderNewCatForm(){
+  
+  let form = document.createElement('form')
+  form.innerHTML = `Category Title:<br>
+  <input id="new_category" type="text" name="firstname" value="">
+  <br><input id="new_cat_submit" type="submit" value="Submit">
+  </form> `
+  form.style.width = "200x"
+  postPlace.appendChild(form)
+}
+
+
 
 // function renderCategories(){
 //   store.categories.forEach(category => {
