@@ -25,19 +25,17 @@ class Category {
           this.name = data.name
           this.id = data.id;
           store.categories.push(this);
-          this.renderCategories()
+          this.renderSelf()
         }
         posts() {
         return store.posts.filter(post => {
           return post.category_id == this.id;
             });
         }
-        renderCategories(){
-          store.categories.forEach(category => {
+        renderSelf(){
             let x = document.createElement('li')
-            x.innerText = category.name
+            x.innerText = this.name
             x.id = `category_${this.id}`
             categoryDiv.appendChild(x)
-          })
         }
       }
