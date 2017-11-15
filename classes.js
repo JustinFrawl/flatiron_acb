@@ -1,4 +1,3 @@
-let store = {posts: [], categories: [], comments: []}
 class Comment {
     constructor(data){
       this.text = data.text
@@ -26,10 +25,19 @@ class Category {
           this.name = data.name
           this.id = data.id;
           store.categories.push(this);
+          this.renderCategories()
         }
         posts() {
         return store.posts.filter(post => {
           return post.category_id == this.id;
             });
+        }
+        renderCategories(){
+          store.categories.forEach(category => {
+            let x = document.createElement('li')
+            x.innerText = category.name
+            x.id = `category_${this.id}`
+            categoryDiv.appendChild(x)
+          })
         }
       }
