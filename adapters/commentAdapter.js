@@ -1,6 +1,6 @@
 class CommentAdapter {
   static all(category_id, post_id) {
-    fetch(`https://jk-api.herokuapp.com/api/v1/categories/${category_id}/posts/${post_id}/comments`)
+    return fetch(`https://jk-api.herokuapp.com/api/v1/categories/${category_id}/posts/${post_id}/comments`)
     .then(res => res.json())
     .then(res => {
       const comments = res
