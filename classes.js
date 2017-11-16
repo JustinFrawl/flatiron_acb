@@ -52,6 +52,7 @@ class Category {
   constructor(data){
     this.name = data.name
     this.id = data.id;
+    this.posts = data.posts
     store.categories.push(this);
     this.renderCategories();
   }

@@ -31,7 +31,7 @@ class App {
         // debugger
       }
       if (e.target.className === "posts") {
-        postPlace.innerHTML = ""
+        // postPlace.innerHTML = ""
         category_id = event.target.id.split("_")[1];
         post_id = event.target.id.split("_")[1];
         CommentAdapter.all(category_id, post_id);
