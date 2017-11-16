@@ -1,89 +1,97 @@
+let category_id;
+let post_id;
+
 class App {
-  constructor (){
-    this.startUp()
+  constructor() {
+    CategoryAdapter.all()
   }
-
-  startUp() {
-    CategoryAdapter.all();
-    // debugger
-    // this.createPosts()
-    // // debugger
-    // this.createComments()
-    // // debugger
-    // this.createCategories()
-  }
-
-  // createCategories(){
-  //   fetch(`https://jk-api.herokuapp.com/api/v1/categories`)
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     const categories = res
-  //     .map(category => {
-  //       return {
-  //         id: category.id,
-  //         name: category.name,
-  //
-  //       };
-  //     })
-  //     .map(categoryData => {
-  //       new Category(categoryData);
-  //     });
-  //   });
-  // }
-  //
-  // createPosts(){
-  //   fetch(`https://jk-api.herokuapp.com/api/v1/posts`)
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     const posts = res
-  //     .map(post => {
-  //       return {
-  //         id: post.id,
-  //         text: post.text,
-  //         category_id: post.category_id,
-  //         image: post.image
-  //
-  //       };
-  //     })
-  //     .map(postData => {
-  //       new Post(postData);
-  //     });
-  //   });
-  //   // debugger
-  // }
-  //
-  // createComments(){
-  //   fetch(`https://jk-api.herokuapp.com/api/v1/comments`)
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     const comments = res
-  //     .map(comment => {
-  //       return {
-  //         id: comment.id,
-  //         text: comment.text,
-  //         post_id: comment.post_id,
-  //
-  //
-  //       };
-  //     })
-  //     .map(commentData => {
-  //       new Comment(commentData);
-  //     });
-  //   });
-  // }
 
   addEventListeners() {
-    document.body.addEventListener("click", function(e) {
+    document.body.addEventListener("click", e => {
       if (e.target.className === "categories") {
-        debugger;
-        let category_id = event.target.id.split("_")[1];
-        console.log(category_id);
-        PostAdapter.all(category_id)
-        
-
-
+        category_id = event.target.id.split("_")[1];
+        PostAdapter.all(category_id);
+        let showPosts = store.categories.filter(category => {
+          return category.id == category_id;
+        });
+        showPosts[0].renderPosts();
+        this.addPostButton();
+      }
+      if (e.target.className === "posts") {
+        category_id = event.target.id.split("_")[1];
+        post_id = event.target.id.split("_")[1];
+        CommentAdapter.all(category_id, post_id);
+        let showComments = store.posts.filter(post => {
+          return post.id == post_id;
+        });
+        showComments[0].renderComments();
+        this.addCommentButton();
+      }
+      if (e.target.id === "like_button") {
+        let likes = document.querySelector("#likes");
+        likes.innerText = parseInt(likes.innerText) + 1;
+      }
+    });
+    document.body.addEventListener("submit", e => {
+      if (e.target.id === "post_form") {
+        e.preventDefault();
+        this.addPost(post_input.value);
+      }
+      if (e.target.id === "comment_form") {
+        e.preventDefault();
+        this.addComment(comment_input.value);
       }
     });
   }
 
+  addPostButton() {
+    let postForm = document.createElement("form");
+    postForm.id = "post_form";
+    postForm.innerHTML =
+      `<input id="post_input" type="text" name="post" placeholder="Add Post"/>
+      <input id ="post_submit" input type="submit" value="Submit"/>`
+    let addPost = document.querySelector("#post_place");
+    addPost.append(postForm);
+  }
+
+  addCommentButton() {
+    let commentForm = document.createElement("form");
+    commentForm.id = "comment_form";
+    commentForm.innerHTML =
+    `<input id="comment_input" type="text" name="comment" placeholder="Add Comment"/>
+    <input id ="comment_submit" input type="submit" value="Submit"/>`
+    let addComment = document.querySelector("#post_place");
+    addComment.append(commentForm);
+  }
+
+  addPost(input) {
+    fetch (`https://jk-api.herokuapp.com/api/v1/categories/${category_id}/posts`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        text: input,
+        category_id: category_id,
+        id: `{store.posts.length}`
+      })
+    })
+  }
+
+  addComment(input) {
+    fetch (`https://jk-api.herokuapp.com/api/v1/categories/${category_id}/posts/${post_id}/comments`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: `${store.comments.length}`,
+        text: input,
+        category_id: `${category_id}`,
+        image: "image"
+      })
+    })
+  }
 }

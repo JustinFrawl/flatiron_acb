@@ -8,7 +8,7 @@ class CommentAdapter {
         return {
           id: comment.id,
           text: comment.text,
-          post_id: comment.post_id,
+          post_id: comment.post_id
         };
       })
       .map(commentData => {
@@ -26,7 +26,7 @@ class CommentAdapter {
         return {
           id: comment.id,
           text: comment.text,
-          post_id: comment.post_id,
+          post_id: comment.post_id
         };
       })
       .map(commentData => {

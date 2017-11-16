@@ -15,8 +15,6 @@ class PostAdapter {
       .map(postData => {
         new Post(postData);
       });
-      console.log(category_id);
-      debugger
     });
   }
 

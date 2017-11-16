@@ -1,26 +1,13 @@
-let store = {posts: [], categories: [], comments: []}
+let store = {categories: [], posts: [], comments: []};
 
-const categories = store.categories
-const comments = store.comments
-const posts = store.posts
 const categoryDiv = document.getElementById('category_div')
 const postPlace = document.getElementById('post_place')
 const button = document.getElementById('createCatButton')
 
 document.addEventListener('DOMContentLoaded', function() {
-  app = new App
+  app = new App;
   app.addEventListeners();
-  // setEventListeners()
 })
-
-
-// function setEventListeners(){
-//   button.addEventListener('click', e => {
-//     console.log('clicked')
-//     postPlace.innerHTML = ""
-//     renderNewCatForm()
-//   })
-// }
 
 function renderNewCatForm(){
   let form = document.createElement('form')
@@ -35,44 +22,37 @@ function renderNewCatForm(){
 }
 
 function addCatFormEventListener(){
-const new_cat = document.querySelector('#new_cat_form')
-const new_cat_value = new_cat.children[1]
+  const new_cat = document.querySelector('#new_cat_form')
+  const new_cat_value = new_cat.children[1]
   new_cat.addEventListener('submit', e =>{
     e.preventDefault()
     console.log('what the heck')
     debugger
     post_cat(new_cat_value.value)
-
-
   })
 }
-function post_cat(value){
 
-  if (value === undefined){
-    alert('no workie')
-  }
-  else{
-  // let x = new Category(value)
-  fetch("https://jk-api.herokuapp.com/api/v1/categories", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-      name: `${value}`,
-
+function post_cat(value) {
+  if (value === undefined) {
+    alert('no workie');
+  } else {
+    fetch("https://jk-api.herokuapp.com/api/v1/categories", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: `${value}`
+      })
     })
-  })
-  .then(function (data) {
-    console.log('Request success: ', data);
-  })
-  .catch(function (error) {
-    console.log('Request failure: ', error);
-  });
-
-}
-// new Category(name= value)
+    .then(function (data) {
+      console.log('Request success: ', data);
+    })
+    .catch(function (error) {
+      console.log('Request failure: ', error);
+    });
+  }
 }
 
 
