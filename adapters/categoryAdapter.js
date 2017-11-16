@@ -8,7 +8,6 @@ class CategoryAdapter {
         return {
           id: category.id,
           name: category.name,
-          posts: category.posts,
         };
       })
       .map(categoryData => {
@@ -26,7 +25,6 @@ class CategoryAdapter {
         return {
           id: category.id,
           name: category.name,
-          posts: category.posts,
         };
       })
       .map(categoryData => {

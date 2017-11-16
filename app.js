@@ -7,23 +7,11 @@ class App {
   }
 
   addEventListeners() {
-<<<<<<< HEAD
-
-    button.addEventListener('click', e => {
-      console.log('clicked')
-      postPlace.innerHTML = ""
-      renderNewCatForm()
-    })
-
-
-
-=======
     button.addEventListener('click', e => {
       // console.log('clicked')
       postPlace.innerHTML = ""
       renderNewCatForm()
     })
->>>>>>> 320d231aad795bf03c34509a8499a79a40fc402b
     document.body.addEventListener("click", e => {
       if (e.target.className === "categories") {
         postPlace.innerHTML = ""
@@ -41,19 +29,6 @@ class App {
         // debugger
       }
       if (e.target.className === "posts") {
-<<<<<<< HEAD
-        // postPlace.innerHTML = ""
-        category_id = event.target.id.split("_")[1];
-        post_id = event.target.id.split("_")[1];
-        CommentAdapter.all(category_id, post_id);
-        // let showComments = store.posts.filter
-        let showComments = store.posts.filter(post => {
-          debugger
-          return post.id == post_id;
-        });
-        showComments[0].renderComments();
-        this.addCommentButton();
-=======
         category_id = event.target.id.split("_")[1];
         post_id = event.target.id.split("_")[1];
         CommentAdapter.all(category_id, post_id).then( () => {
@@ -65,7 +40,6 @@ class App {
         } );
 
 
->>>>>>> 320d231aad795bf03c34509a8499a79a40fc402b
       }
       if (e.target.id === "like_button") {
         // postPlace.innerHTML = ""

@@ -20,7 +20,6 @@ class Post {
   constructor(data) {
     this.text = data.text
     this.category_id = data.category_id
-    this.comments = data.comments
     this.id = data.id
     if (this.findOrCreateBy()) {
       this.findOrCreateBy();
@@ -96,11 +95,6 @@ class Category {
   constructor(data){
     this.name = data.name
     this.id = data.id;
-<<<<<<< HEAD
-    this.posts = data.posts
-    store.categories.push(this);
-=======
->>>>>>> 320d231aad795bf03c34509a8499a79a40fc402b
     this.renderCategories();
     if (this.findOrCreateBy()) {
       this.findOrCreateBy();
@@ -121,12 +115,8 @@ class Category {
     categoryDiv.appendChild(li);
   }
   renderPosts() {
-<<<<<<< HEAD
-    this.posts.forEach(post => {
-=======
     postPlace.innerHTML = ""
     this.posts().forEach(post => {
->>>>>>> 320d231aad795bf03c34509a8499a79a40fc402b
       let div = document.createElement("div");
       let ol = document.createElement("ol");
       ol.id = `comment-container-${post.id}`
