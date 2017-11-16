@@ -8,11 +8,11 @@ class App {
 
   addEventListeners() {
 
-      button.addEventListener('click', e => {
-        console.log('clicked')
-        postPlace.innerHTML = ""
-        renderNewCatForm()
-      })
+    button.addEventListener('click', e => {
+      console.log('clicked')
+      postPlace.innerHTML = ""
+      renderNewCatForm()
+    })
 
 
 
@@ -35,7 +35,9 @@ class App {
         category_id = event.target.id.split("_")[1];
         post_id = event.target.id.split("_")[1];
         CommentAdapter.all(category_id, post_id);
+        // let showComments = store.posts.filter
         let showComments = store.posts.filter(post => {
+          debugger
           return post.id == post_id;
         });
         showComments[0].renderComments();

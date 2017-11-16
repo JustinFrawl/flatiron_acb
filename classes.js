@@ -11,6 +11,7 @@ class Post {
   constructor(data) {
     this.text = data.text
     this.category_id = data.category_id
+    this.comments = data.comments
     this.id = data.id
     store.posts.push(this);
   }
@@ -69,7 +70,7 @@ class Category {
     categoryDiv.appendChild(li);
   }
   renderPosts() {
-    this.posts().forEach(post => {
+    this.posts.forEach(post => {
       let div = document.createElement("div");
       div.id = `post_${post.id}`;
       div.className = "posts";

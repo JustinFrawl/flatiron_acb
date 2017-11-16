@@ -9,11 +9,14 @@ class PostAdapter {
           id: post.id,
           text: post.text,
           category_id: post.category_id,
-          image: post.image
+          image: post.image,
+          comments: post.comments,
         };
       })
       .map(postData => {
+        if (this.findOrCreateBy(postData) == true){
         new Post(postData);
+      }
       });
     });
   }
@@ -28,12 +31,20 @@ class PostAdapter {
           id: post.id,
           text: post.text,
           category_id: post.category_id,
-          image: post.image
+          image: post.image,
+          comments: post.comments,
         };
       })
       .map(postData => {
+        if (this.findOrCreateBy(postData) == true){
         new Post(postData);
+      }
       });
     });
   }
+  static findOrCreateBy(data) {
+   return store.posts.find(post => {
+     return post.id === data.id;
+   });
+ }
 }

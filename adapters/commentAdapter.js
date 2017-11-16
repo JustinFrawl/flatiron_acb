@@ -12,7 +12,9 @@ class CommentAdapter {
         };
       })
       .map(commentData => {
+        if (this.findOrCreateBy(commentData) == true){
         new Comment(commentData);
+      }
       });
     });
   }
@@ -30,8 +32,15 @@ class CommentAdapter {
         };
       })
       .map(commentData => {
+        if (this.findOrCreateBy(commentData) == true){
         new Comment(commentData);
+      }
       });
     });
   }
+  static findOrCreateBy(data) {
+   return store.comments.find(comment => {
+     return comment.id === data.id;
+   });
+ }
 }
