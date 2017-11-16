@@ -36,7 +36,6 @@ function addCatFormEventListener(){
   new_cat.addEventListener('submit', e =>{
     e.preventDefault()
     console.log('what the heck')
-    debugger
     post_cat(new_cat_value.value)
   })
 }
@@ -55,12 +54,16 @@ function post_cat(value) {
         name: `${value}`
       })
     })
-    .then(function (data) {
-      console.log('Request success: ', data);
-    })
-    .catch(function (error) {
-      console.log('Request failure: ', error);
-    });
+    .then(resp => resp.json())
+    .then(json => {
+      new Category(json)
+      // console.log(x)
+      // console.log(store)
+      // store.posts.push(json);
+      // console.log(store)
+      // x.renderPosts();
+  })
+
   }
 }
 
