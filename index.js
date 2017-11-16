@@ -7,7 +7,16 @@ const button = document.getElementById('createCatButton')
 document.addEventListener('DOMContentLoaded', function() {
   app = new App;
   app.addEventListeners();
+  // setEventListeners()
 })
+
+// function setEventListeners(){
+//   button.addEventListener('click', e => {
+//     console.log('clicked')
+//     postPlace.innerHTML = ""
+//     renderNewCatForm()
+//   })
+// }
 
 function renderNewCatForm(){
   let form = document.createElement('form')

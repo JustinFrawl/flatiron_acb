@@ -7,17 +7,31 @@ class App {
   }
 
   addEventListeners() {
+
+      button.addEventListener('click', e => {
+        console.log('clicked')
+        postPlace.innerHTML = ""
+        renderNewCatForm()
+      })
+
+
+
     document.body.addEventListener("click", e => {
       if (e.target.className === "categories") {
+        postPlace.innerHTML = ""
         category_id = event.target.id.split("_")[1];
         PostAdapter.all(category_id);
         let showPosts = store.categories.filter(category => {
           return category.id == category_id;
         });
+        // let posts = showPosts.posts()
+        // debugger
         showPosts[0].renderPosts();
         this.addPostButton();
+        // debugger
       }
       if (e.target.className === "posts") {
+        postPlace.innerHTML = ""
         category_id = event.target.id.split("_")[1];
         post_id = event.target.id.split("_")[1];
         CommentAdapter.all(category_id, post_id);
@@ -28,11 +42,13 @@ class App {
         this.addCommentButton();
       }
       if (e.target.id === "like_button") {
+        postPlace.innerHTML = ""
         let likes = document.querySelector("#likes");
         likes.innerText = parseInt(likes.innerText) + 1;
       }
     });
     document.body.addEventListener("submit", e => {
+      postPlace.innerHTML = ""
       if (e.target.id === "post_form") {
         e.preventDefault();
         this.addPost(post_input.value);
@@ -45,6 +61,7 @@ class App {
   }
 
   addPostButton() {
+    // postPlace.innerHTML = ""
     let postForm = document.createElement("form");
     postForm.id = "post_form";
     postForm.innerHTML =
@@ -55,6 +72,7 @@ class App {
   }
 
   addCommentButton() {
+    // postPlace.innerHTML = ""
     let commentForm = document.createElement("form");
     commentForm.id = "comment_form";
     commentForm.innerHTML =
