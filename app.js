@@ -88,6 +88,7 @@ class App {
     if (input == ""){
       alert("Fill in the Post Form you Bully")
     }
+    else {
     fetch (`https://jk-api.herokuapp.com/api/v1/categories/${category_id}/posts`, {
       method: "POST",
       headers: {
@@ -107,12 +108,14 @@ class App {
       x.renderPosts();
 
   })
+}
   }
 
   addComment(input,postId) {
     if (input == ""){
       alert("Fill in the Comment Form you Bully")
     }
+    else {
     fetch (`https://jk-api.herokuapp.com/api/v1/categories/${category_id}/posts/${post_id}/comments`, {
       method: "POST",
       headers: {
@@ -135,5 +138,6 @@ class App {
       console.log(store)
       x.renderComments();
   })
+}
 }
 }
