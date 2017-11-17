@@ -32,7 +32,7 @@ class PostAdapter {
         };
       })
       .map(postData => {
-        
+
         new Post(postData);
       });
     });
