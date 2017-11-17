@@ -53,6 +53,7 @@ class App {
         e.preventDefault();
         this.addPost(post_input.value,);
 
+
       }
       if (e.target.id === "comment_form") {
         e.preventDefault();
@@ -99,11 +100,9 @@ class App {
     .then(resp => resp.json())
     .then(json => {
       var x = store.categories.filter(category=> category.id === json.category_id)[0];
-      // console.log(x)
-      console.log(store)
-      store.posts.push(json);
-      console.log(store)
+      new Post(json)
       x.renderPosts();
+
   })
   }
 
