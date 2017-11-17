@@ -1,0 +1,84 @@
+/*div.container {
+  width: 100%;
+  border: 1px solid gray;
+}*/
+
+header, footer {
+  padding: 1em;
+  color: white;
+  background-color: black;
+  clear: left;
+  text-align: center;
+}
+
+nav {
+  background-color: #ededed;
+  float: left;
+  max-width: 300px;
+  margin: 0;
+  padding: 1em;
+  border: 1px solid black;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul a {
+  text-decoration: none;
+}
+
+article {
+  margin-left: 300px;
+  max-width: 900px;
+  border: 1px solid black;
+  overflow: hidden;
+  text-align: left 100px;
+  bottom: 0;
+}
+
+li.categories {
+  font-size: 150%;
+  font-weight: bold;
+  text-align: center;
+  width: 200px;
+  border: 25px solid green;
+  padding: 25px;
+  margin: 25px;
+  border:1px solid black;
+}
+
+div.posts {
+  background-color: #f5f5dc;
+  text-indent: 30px;
+  font-size: 125%;
+  border: 1px solid black;
+  width: 900px;
+  font-weight: bold;
+}
+
+li {
+  margin:0 0 10px 0;
+  font-size: 100%;
+}
+
+#post_form {
+  float: right;
+  bottom: 0;
+}
+
+h3 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+#createCatButton {
+  float: right;
+  bottom: 0;
+}
+
+/*#comment_form {
+  float: right;
+  bottom: 20px;
+}*/
