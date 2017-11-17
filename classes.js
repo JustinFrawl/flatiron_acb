@@ -122,7 +122,7 @@ class Category {
       ol.id = `comment-container-${post.id}`
       div.id = `post_${post.id}`;
       div.className = "posts";
-      div.innerHTML = `${post.text}`;
+      div.innerHTML = `Post ${post.id}: ${post.text}`;
       div.appendChild(ol)
       postPlace.append(div);
     })
