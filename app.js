@@ -85,6 +85,9 @@ class App {
   // }
 
   addPost(input) {
+    if (input == ""){
+      alert("Fill in the Post Form you Bully")
+    }
     fetch (`https://jk-api.herokuapp.com/api/v1/categories/${category_id}/posts`, {
       method: "POST",
       headers: {
@@ -107,6 +110,9 @@ class App {
   }
 
   addComment(input,postId) {
+    if (input == ""){
+      alert("Fill in the Comment Form you Bully")
+    }
     fetch (`https://jk-api.herokuapp.com/api/v1/categories/${category_id}/posts/${post_id}/comments`, {
       method: "POST",
       headers: {
@@ -125,7 +131,7 @@ class App {
       var x = store.posts.filter(post=> post.id === json.post_id)[0];
       // console.log(x)
       console.log(store)
-      store.comments.push(json);
+      new Comment(json)
       console.log(store)
       x.renderComments();
   })
